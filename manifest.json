@@ -1,7 +1,8 @@
 {
-  "checked" : "2026-10-06",
-  "daysHash" : "da599387a0b19f20ea5dafe6a52051bad2923a78977289b1acd19cc8af7c6276",
+  "checked" : "2026-10-07",
+  "daysHash" : "80f1d486adbd2ffe1994896c3065ec08784c39aaac33d0e38d64c3cd300800fb",
   "feeds" : [
+    "https:\/\/calendar.google.com\/calendar\/ical\/c_7495e8d3d285062fd29b7a264b5addeafca0a84b7bc1b6d6dee7356dd0dda7a5%40group.calendar.google.com\/public\/basic.ics",
     "https:\/\/calendar.google.com\/calendar\/ical\/04ve1kf4o83kp0vqvq2jun9m6n2j03of%40import.calendar.google.com\/public\/basic.ics"
   ],
   "preview" : "print-preview.jpg",
