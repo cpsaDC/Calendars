@@ -1,7 +1,7 @@
 {
   "checked" : "2026-10-07",
   "daysHash" : "80f1d486adbd2ffe1994896c3065ec08784c39aaac33d0e38d64c3cd300800fb",
-  "designHash" : "4884c46b86d069669ddcf6eb5884da39bd3f7073b2f9dce6b3bb511d05bb9457",
+  "designHash" : "b7e4d3f17a0617433d2aa57a817b49015564769a4dce80a1b11401fbda7dcbe4",
   "feeds" : [
     "https:\/\/calendar.google.com\/calendar\/ical\/c_7495e8d3d285062fd29b7a264b5addeafca0a84b7bc1b6d6dee7356dd0dda7a5%40group.calendar.google.com\/public\/basic.ics",
     "https:\/\/calendar.google.com\/calendar\/ical\/04ve1kf4o83kp0vqvq2jun9m6n2j03of%40import.calendar.google.com\/public\/basic.ics"
@@ -9,9 +9,9 @@
   "preview" : "print-preview.jpg",
   "print" : "print.pdf",
   "wallpapers" : [
-    "wallpaper-light-calendar.png",
-    "wallpaper-dark-calendar.png",
-    "wallpaper-progress-blue.png"
+    "wallpaper-cpsa-light.png",
+    "wallpaper-cpsa-blue.png",
+    "wallpaper-cpsa-dark.png"
   ],
   "year" : 2026
 }
