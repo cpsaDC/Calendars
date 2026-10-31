@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 Session Calendar · CPSA</title>
+<style>
+:root {
+  --ink: #0d1a33; --muted: #5b6577; --line: #e3e7ee; --soft: #f4f6fa;
+  --accent: #204fe6; --accent-ink: #ffffff; --radius: 14px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #ffffff; color: var(--ink); font-family: var(--font); }
+body { -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 48px 32px 56px;
+        display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: 56px; align-items: start; }
+.controls { position: sticky; top: 32px; }
+.eyebrow { margin: 0 0 10px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+           color: var(--accent); font-weight: 600; }
+h1 { margin: 0; font-size: 40px; line-height: 1.08; letter-spacing: -.02em; font-weight: 700; }
+.lede { margin: 14px 0 0; color: var(--muted); font-size: 16px; line-height: 1.55; }
+h2 { margin: 36px 0 12px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+     color: var(--muted); font-weight: 600; }
+.section + .section { margin-top: 16px; }
+.section-name { margin: 0 0 8px; font-size: 14px; font-weight: 600; color: var(--ink); }
+.formats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.format { appearance: none; border: 1px solid var(--line); background: #fff; border-radius: 12px;
+          padding: 12px 14px; display: flex; align-items: center; gap: 10px; cursor: pointer;
+          font: 500 15px var(--font); color: var(--ink); text-align: left; transition: border-color .15s, box-shadow .15s; }
+.format:hover { border-color: #c7cede; }
+.format[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(32,79,230,.12); }
+.format .chip { width: 13px; height: 26px; border-radius: 3px; border: 1px solid rgba(13,26,51,.18); flex: none; }
+.format .chip.print { width: 18px; height: 23px; border-radius: 2px; }
+.format .chip.duo { width: 18px; height: 25px; }
+.rows { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.row { display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: #fff; }
+.row + .row { border-top: 1px solid var(--line); }
+/* Font Awesome Free icons (CC BY 4.0; each keeps its credit): the House's columns, the
+   Senate's quill, the holidays' calendar (Michael, 2026-10-26: "Quill for Senate bank
+   for House calendar for holidays"). */
+.row .icon { width: 22px; height: 22px; flex: none; color: var(--ink); }
+.row .text { flex: 1; min-width: 0; }
+.row .name { font-size: 16px; font-weight: 600; }
+.row .hint { font-size: 13px; color: var(--muted); margin-top: 2px; }
+/* The switches drawn as iOS draws them, in CPSA blue for iOS's green (Michael,
+   2026-10-26: "make it look like ios", "But with cpsa blue instead of green"). */
+.switch { position: relative; width: 51px; height: 31px; flex: none; }
+.switch input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; z-index: 1; }
+.switch .track { position: absolute; inset: 0; border-radius: 999px; background: #e9e9eb;
+                 transition: background-color .25s ease; }
+.switch .knob { position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; border-radius: 50%;
+                background: #fff; box-shadow: 0 3px 8px rgba(0,0,0,.15), 0 3px 1px rgba(0,0,0,.06);
+                transition: transform .25s cubic-bezier(.3,.7,.4,1); }
+.switch input:checked ~ .track { background: #204fe6; }
+.switch input:checked ~ .knob { transform: translateX(20px); }
+.switch input:focus-visible ~ .track { outline: 3px solid rgba(32,79,230,.35); outline-offset: 2px; }
+.note { min-height: 20px; margin: 10px 2px 0; font-size: 13px; color: var(--muted); opacity: 0; transition: opacity .3s; }
+.note.shown { opacity: 1; }
+/* The spring back: past on, then settled. */
+@keyframes bounce-on { 0% { transform: translateX(0); } 60% { transform: translateX(24px); } 80% { transform: translateX(18px); } 100% { transform: translateX(20px); } }
+.switch.bounce .knob { animation: bounce-on .42s cubic-bezier(.3,.7,.4,1); }
+.download { margin-top: 26px; display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 15px 18px; border-radius: 12px; background: var(--accent); color: var(--accent-ink);
+            font: 600 16px var(--font); text-decoration: none; transition: filter .15s, transform .05s; }
+.download:hover { filter: brightness(1.06); }
+.download:active { transform: translateY(1px); }
+.download svg { width: 18px; height: 18px; }
+.file { margin: 10px 2px 0; font-size: 12px; color: var(--muted); word-break: break-word; }
+.updated { margin: 28px 2px 0; font-size: 12px; color: var(--muted); }
+.preview { background: var(--soft); border-radius: 20px; padding: 40px; min-height: 560px;
+           display: flex; align-items: center; justify-content: center; }
+.preview img { display: block; max-width: 100%; height: auto; max-height: calc(100vh - 160px);
+               border-radius: 6px; background: #fff;
+               box-shadow: 0 1px 2px rgba(13,26,51,.06), 0 12px 32px rgba(13,26,51,.14);
+               transition: opacity .2s; }
+.preview img.wallpaper { border-radius: 18px; }
+.preview img.loading { opacity: .45; }
+@media (max-width: 860px) {
+  .wrap { grid-template-columns: 1fr; gap: 32px; padding: 28px 16px 40px; }
+  .controls { position: static; }
+  h1 { font-size: 32px; }
+  .preview { padding: 20px; min-height: 0; }
+  .preview img { max-height: none; }
+  .preview img.wallpaper { max-width: 340px; width: 100%; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="controls" aria-label="Choose your calendar">
+    <p class="eyebrow">Congressional Progressive Staff Association</p>
+    <h1>2026 Session Calendar</h1>
+    <p class="lede">Pick a format and the calendars to show. The preview updates as you go.</p>
+
+    <h2>Format</h2>
+    <div id="formats"></div>
+
+    <h2>Calendars</h2>
+    <div class="rows">
+      <label class="row">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true" fill="currentColor"><!--!Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M335.9 84.2C326.1 78.6 314 78.6 304.1 84.2L80.1 212.2C67.5 219.4 61.3 234.2 65 248.2C68.7 262.2 81.5 272 96 272L128 272L128 480L128 480L76.8 518.4C68.7 524.4 64 533.9 64 544C64 561.7 78.3 576 96 576L544 576C561.7 576 576 561.7 576 544C576 533.9 571.3 524.4 563.2 518.4L512 480L512 272L544 272C558.5 272 571.2 262.2 574.9 248.2C578.6 234.2 572.4 219.4 559.8 212.2L335.8 84.2zM464 272L464 480L400 480L400 272L464 272zM352 272L352 480L288 480L288 272L352 272zM240 272L240 480L176 480L176 272L240 272zM320 160C337.7 160 352 174.3 352 192C352 209.7 337.7 224 320 224C302.3 224 288 209.7 288 192C288 174.3 302.3 160 320 160z"/></svg>
+        <span class="text"><span class="name">House</span><span class="hint" style="display:block">Days the House is in session</span></span>
+        <span class="switch"><input type="checkbox" role="switch" id="house" checked aria-label="House"><span class="track"></span><span class="knob"></span></span>
+      </label>
+      <label class="row">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true" fill="currentColor"><!--!Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M416 64C457 64 496.3 80.3 525.2 109.2L530.7 114.7C559.7 143.7 576 183 576 223.9C576 248 570.3 271.5 559.8 292.7C557.9 296.4 554.5 299.2 550.5 300.4L438.5 334C434.6 335.2 432 338.7 432 342.8C432 347.9 436.1 352 441.2 352L473.4 352C487.7 352 494.8 369.2 484.7 379.3L462.3 401.7C460.4 403.6 458.1 404.9 455.6 405.7L374.6 430C370.7 431.2 368.1 434.7 368.1 438.8C368.1 443.9 372.2 448 377.3 448C390.5 448 396.2 463.7 385.1 470.9C344 497.5 295.8 512 246.1 512L160.1 512L112.1 560C103.3 568.8 88.9 568.8 80.1 560C71.3 551.2 71.3 536.8 80.1 528L320 288C328.8 279.2 328.8 264.8 320 256C311.2 247.2 296.8 247.2 288 256L143.5 400.5C137.8 406.2 128 402.2 128 394.1C128 326.2 155 261.1 203 213.1L306.8 109.2C335.7 80.3 375 64 416 64z"/></svg>
+        <span class="text"><span class="name">Senate</span><span class="hint" style="display:block">Days the Senate is in session</span></span>
+        <span class="switch"><input type="checkbox" role="switch" id="senate" checked aria-label="Senate"><span class="track"></span><span class="knob"></span></span>
+      </label>
+      <label class="row">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true" fill="currentColor"><!--!Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M224 64C206.3 64 192 78.3 192 96L192 128L160 128C124.7 128 96 156.7 96 192L96 240L544 240L544 192C544 156.7 515.3 128 480 128L448 128L448 96C448 78.3 433.7 64 416 64C398.3 64 384 78.3 384 96L384 128L256 128L256 96C256 78.3 241.7 64 224 64zM96 288L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 288L96 288z"/></svg>
+        <span class="text"><span class="name">Federal holidays</span><span class="hint" style="display:block">Marked on their days</span></span>
+        <span class="switch"><input type="checkbox" role="switch" id="holidays" checked aria-label="Federal holidays"><span class="track"></span><span class="knob"></span></span>
+      </label>
+    </div>
+    <p class="note" id="note" aria-live="polite"></p>
+
+    <a class="download" id="download" href="#" download>
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10m0 0l-4-4m4 4l4-4M4 16h12"/></svg>
+      <span id="download-label">Download</span>
+    </a>
+    <p class="file" id="file"></p>
+    <p class="updated" id="updated"></p>
+  </section>
+
+  <section class="preview" aria-label="Preview">
+    <img id="preview" alt="Preview of the calendar">
+  </section>
+</main>
+<script>
+const DATA = {"checked":"2026-10-29","choices":[{"choice":{"holidays":true,"house":true,"senate":true},"preview":"print-preview.jpg","print":"Printable 2026 Session Calendar - CPSA (Light).pdf","wallpapers":["Wallpaper 2026 Session Calendar - CPSA (Light).png","Wallpaper 2026 Session Calendar - CPSA (Blue).png","Wallpaper 2026 Session Calendar - CPSA (Dark).png","Duo Wallpaper 2026 Session Calendar - CPSA (Light).png","Duo Wallpaper 2026 Session Calendar - CPSA (Blue).png","Duo Wallpaper 2026 Session Calendar - CPSA (Dark).png"]},{"choice":{"holidays":false,"house":true,"senate":true},"preview":"choices/house-senate/print-preview.jpg","print":"choices/house-senate/Printable 2026 Session Calendar - CPSA (Light) - House, Senate.pdf","wallpapers":["choices/house-senate/Wallpaper 2026 Session Calendar - CPSA (Light) - House, Senate.png","choices/house-senate/Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Senate.png","choices/house-senate/Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Senate.png","choices/house-senate/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - House, Senate.png","choices/house-senate/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Senate.png","choices/house-senate/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Senate.png"]},{"choice":{"holidays":true,"house":true,"senate":false},"preview":"choices/house-holidays/print-preview.jpg","print":"choices/house-holidays/Printable 2026 Session Calendar - CPSA (Light) - House, Holidays.pdf","wallpapers":["choices/house-holidays/Wallpaper 2026 Session Calendar - CPSA (Light) - House, Holidays.png","choices/house-holidays/Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Holidays.png","choices/house-holidays/Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Holidays.png","choices/house-holidays/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - House, Holidays.png","choices/house-holidays/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Holidays.png","choices/house-holidays/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Holidays.png"]},{"choice":{"holidays":true,"house":false,"senate":true},"preview":"choices/senate-holidays/print-preview.jpg","print":"choices/senate-holidays/Printable 2026 Session Calendar - CPSA (Light) - Senate, Holidays.pdf","wallpapers":["choices/senate-holidays/Wallpaper 2026 Session Calendar - CPSA (Light) - Senate, Holidays.png","choices/senate-holidays/Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate, Holidays.png","choices/senate-holidays/Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate, Holidays.png","choices/senate-holidays/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - Senate, Holidays.png","choices/senate-holidays/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate, Holidays.png","choices/senate-holidays/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate, Holidays.png"]},{"choice":{"holidays":false,"house":true,"senate":false},"preview":"choices/house/print-preview.jpg","print":"choices/house/Printable 2026 Session Calendar - CPSA (Light) - House.pdf","wallpapers":["choices/house/Wallpaper 2026 Session Calendar - CPSA (Light) - House.png","choices/house/Wallpaper 2026 Session Calendar - CPSA (Blue) - House.png","choices/house/Wallpaper 2026 Session Calendar - CPSA (Dark) - House.png","choices/house/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - House.png","choices/house/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - House.png","choices/house/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - House.png"]},{"choice":{"holidays":false,"house":false,"senate":true},"preview":"choices/senate/print-preview.jpg","print":"choices/senate/Printable 2026 Session Calendar - CPSA (Light) - Senate.pdf","wallpapers":["choices/senate/Wallpaper 2026 Session Calendar - CPSA (Light) - Senate.png","choices/senate/Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate.png","choices/senate/Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate.png","choices/senate/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - Senate.png","choices/senate/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate.png","choices/senate/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate.png"]},{"choice":{"holidays":true,"house":false,"senate":false},"preview":"choices/holidays/print-preview.jpg","print":"choices/holidays/Printable 2026 Session Calendar - CPSA (Light) - Holidays.pdf","wallpapers":["choices/holidays/Wallpaper 2026 Session Calendar - CPSA (Light) - Holidays.png","choices/holidays/Wallpaper 2026 Session Calendar - CPSA (Blue) - Holidays.png","choices/holidays/Wallpaper 2026 Session Calendar - CPSA (Dark) - Holidays.png","choices/holidays/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - Holidays.png","choices/holidays/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - Holidays.png","choices/holidays/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - Holidays.png"]}],"formats":[{"both":"#92ECE9","group":"Print","holiday":"#F7E5A1","house":"#B5A7FF","id":"print","label":"Print","page":"#FFFFFF","senate":"#CACACA"},{"both":"#92ECE9","group":"Tall Wallpaper","holiday":"#F7E5A1","house":"#B5A7FF","id":"wallpaper-light","label":"Light","page":"#FFFFFF","senate":"#CACACA"},{"both":"#92ECE9","group":"Tall Wallpaper","holiday":"#F0E19E","house":"#B5A7FF","id":"wallpaper-blue","label":"Blue","page":"#0E44D2","senate":"#FFFFFF"},{"both":"#204FE7","group":"Tall Wallpaper","holiday":"#806820","house":"#6D33A8","id":"wallpaper-dark","label":"Dark","page":"#000000","senate":"#4A4F5C"},{"both":"#92ECE9","group":"Duo Wallpaper","holiday":"#F7E5A1","house":"#B5A7FF","id":"duo-light","label":"Light","page":"#FFFFFF","senate":"#CACACA"},{"both":"#92ECE9","group":"Duo Wallpaper","holiday":"#F0E19E","house":"#B5A7FF","id":"duo-blue","label":"Blue","page":"#0E44D2","senate":"#FFFFFF"},{"both":"#204FE7","group":"Duo Wallpaper","holiday":"#806820","house":"#6D33A8","id":"duo-dark","label":"Dark","page":"#000000","senate":"#4A4F5C"}],"year":2026};
+const $ = (id) => document.getElementById(id);
+const params = new URLSearchParams(location.search);
+const state = {
+  format: DATA.formats.some(f => f.id === params.get("file")) ? params.get("file") : DATA.formats[0].id,
+  house: true, senate: true, holidays: true
+};
+const url = (path) => "../" + path.split("/").map(encodeURIComponent).join("/");
+
+function choice() {
+  return DATA.choices.find(c => c.choice.house === state.house && c.choice.senate === state.senate
+    && c.choice.holidays === state.holidays);
+}
+
+function render() {
+  const fmt = DATA.formats.find(f => f.id === state.format);
+  const c = choice();
+  document.querySelectorAll(".format").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.id === state.format)));
+  $("house").checked = state.house; $("senate").checked = state.senate; $("holidays").checked = state.holidays;
+  const isPrint = fmt.id === "print";
+  const index = DATA.formats.findIndex(f => f.id === state.format) - 1;
+  const file = isPrint ? c.print : c.wallpapers[index];
+  const img = $("preview");
+  const src = url(isPrint ? c.preview : file);
+  if (img.getAttribute("src") !== src) {
+    img.classList.add("loading");
+    img.onload = () => img.classList.remove("loading");
+    img.src = src;
+  }
+  img.className = (isPrint ? "print" : "wallpaper") + (img.classList.contains("loading") ? " loading" : "");
+  img.alt = "Preview: " + (fmt.group === "Print" ? "Print" : fmt.label + " " + fmt.group.toLowerCase()) + ", " + ["House", "Senate", "federal holidays"]
+    .filter((_, i) => [state.house, state.senate, state.holidays][i]).join(", ");
+  const name = file.split("/").pop();
+  $("download").href = url(file);
+  $("download").setAttribute("download", name);
+  $("download-label").textContent = isPrint ? "Download the PDF" : "Download the wallpaper";
+  $("file").textContent = name;
+  const q = new URLSearchParams(location.search); q.set("file", state.format);
+  history.replaceState(null, "", "?" + q.toString());
+}
+
+// Three sections: Print, Tall Wallpaper, Duo Wallpaper, each with its tiles.
+for (const group of [...new Set(DATA.formats.map(f => f.group))]) {
+  const section = document.createElement("div"); section.className = "section";
+  const name = document.createElement("p"); name.className = "section-name"; name.textContent = group;
+  const grid = document.createElement("div"); grid.className = "formats";
+  grid.setAttribute("role", "group"); grid.setAttribute("aria-label", group);
+  for (const f of DATA.formats.filter(f => f.group === group)) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "format"; b.dataset.id = f.id;
+    b.setAttribute("aria-label", f.group === "Print" ? "Print" : f.label + " " + f.group.toLowerCase());
+    const chip = document.createElement("span");
+    chip.className = "chip" + (f.id === "print" ? " print" : f.id.startsWith("duo-") ? " duo" : "");
+    chip.style.background = f.page;
+    const label = document.createElement("span"); label.textContent = f.label;
+    b.append(chip, label);
+    b.addEventListener("click", () => { state.format = f.id; render(); });
+    grid.append(b);
+  }
+  section.append(name, grid);
+  $("formats").append(section);
+}
+// At least one stays on (Michael, 2026-10-26: "No they must have one on"). Switching off
+// the last one lets it slide off, then springs it back ("animate it toggling off then
+// bouncing back to being toggled on"), and only then says why ("only show note if they
+// try to toggle off a third").
+let noteTimer;
+for (const id of ["house", "senate", "holidays"]) {
+  $(id).addEventListener("change", (e) => {
+    if (!e.target.checked && ["house", "senate", "holidays"].every(other => other === id || !state[other])) {
+      const sw = e.target.closest(".switch");
+      setTimeout(() => {
+        e.target.checked = true;
+        sw.classList.remove("bounce"); void sw.offsetWidth; sw.classList.add("bounce");
+      }, 260);
+      $("note").textContent = "At least one stays on.";
+      $("note").classList.add("shown");
+      clearTimeout(noteTimer);
+      noteTimer = setTimeout(() => $("note").classList.remove("shown"), 2600);
+      return;
+    }
+    state[id] = e.target.checked; render();
+  });
+}
+const [y, m, d] = DATA.checked.split("-").map(Number);
+$("updated").textContent = "Updated " + new Date(y, m - 1, d).toLocaleDateString("en-US",
+  { month: "long", day: "numeric", year: "numeric" }) + ".";
+render();
+</script>
+</body>
+</html>

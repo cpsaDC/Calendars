@@ -1,0 +1,276 @@
+{
+  "checked" : "2026-10-29",
+  "choices" : [
+    {
+      "choice" : {
+        "holidays" : true,
+        "house" : true,
+        "senate" : true
+      },
+      "preview" : "print-preview.jpg",
+      "print" : "Printable 2026 Session Calendar - CPSA (Light).pdf",
+      "wallpapers" : [
+        "Wallpaper 2026 Session Calendar - CPSA (Light).png",
+        "Wallpaper 2026 Session Calendar - CPSA (Blue).png",
+        "Wallpaper 2026 Session Calendar - CPSA (Dark).png",
+        "Duo Wallpaper 2026 Session Calendar - CPSA (Light).png",
+        "Duo Wallpaper 2026 Session Calendar - CPSA (Blue).png",
+        "Duo Wallpaper 2026 Session Calendar - CPSA (Dark).png"
+      ]
+    },
+    {
+      "choice" : {
+        "holidays" : false,
+        "house" : true,
+        "senate" : true
+      },
+      "preview" : "choices\/house-senate\/print-preview.jpg",
+      "print" : "choices\/house-senate\/Printable 2026 Session Calendar - CPSA (Light) - House, Senate.pdf",
+      "wallpapers" : [
+        "choices\/house-senate\/Wallpaper 2026 Session Calendar - CPSA (Light) - House, Senate.png",
+        "choices\/house-senate\/Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Senate.png",
+        "choices\/house-senate\/Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Senate.png",
+        "choices\/house-senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - House, Senate.png",
+        "choices\/house-senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Senate.png",
+        "choices\/house-senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Senate.png"
+      ]
+    },
+    {
+      "choice" : {
+        "holidays" : true,
+        "house" : true,
+        "senate" : false
+      },
+      "preview" : "choices\/house-holidays\/print-preview.jpg",
+      "print" : "choices\/house-holidays\/Printable 2026 Session Calendar - CPSA (Light) - House, Holidays.pdf",
+      "wallpapers" : [
+        "choices\/house-holidays\/Wallpaper 2026 Session Calendar - CPSA (Light) - House, Holidays.png",
+        "choices\/house-holidays\/Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Holidays.png",
+        "choices\/house-holidays\/Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Holidays.png",
+        "choices\/house-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - House, Holidays.png",
+        "choices\/house-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Holidays.png",
+        "choices\/house-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Holidays.png"
+      ]
+    },
+    {
+      "choice" : {
+        "holidays" : true,
+        "house" : false,
+        "senate" : true
+      },
+      "preview" : "choices\/senate-holidays\/print-preview.jpg",
+      "print" : "choices\/senate-holidays\/Printable 2026 Session Calendar - CPSA (Light) - Senate, Holidays.pdf",
+      "wallpapers" : [
+        "choices\/senate-holidays\/Wallpaper 2026 Session Calendar - CPSA (Light) - Senate, Holidays.png",
+        "choices\/senate-holidays\/Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate, Holidays.png",
+        "choices\/senate-holidays\/Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate, Holidays.png",
+        "choices\/senate-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - Senate, Holidays.png",
+        "choices\/senate-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate, Holidays.png",
+        "choices\/senate-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate, Holidays.png"
+      ]
+    },
+    {
+      "choice" : {
+        "holidays" : false,
+        "house" : true,
+        "senate" : false
+      },
+      "preview" : "choices\/house\/print-preview.jpg",
+      "print" : "choices\/house\/Printable 2026 Session Calendar - CPSA (Light) - House.pdf",
+      "wallpapers" : [
+        "choices\/house\/Wallpaper 2026 Session Calendar - CPSA (Light) - House.png",
+        "choices\/house\/Wallpaper 2026 Session Calendar - CPSA (Blue) - House.png",
+        "choices\/house\/Wallpaper 2026 Session Calendar - CPSA (Dark) - House.png",
+        "choices\/house\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - House.png",
+        "choices\/house\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - House.png",
+        "choices\/house\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - House.png"
+      ]
+    },
+    {
+      "choice" : {
+        "holidays" : false,
+        "house" : false,
+        "senate" : true
+      },
+      "preview" : "choices\/senate\/print-preview.jpg",
+      "print" : "choices\/senate\/Printable 2026 Session Calendar - CPSA (Light) - Senate.pdf",
+      "wallpapers" : [
+        "choices\/senate\/Wallpaper 2026 Session Calendar - CPSA (Light) - Senate.png",
+        "choices\/senate\/Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate.png",
+        "choices\/senate\/Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate.png",
+        "choices\/senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - Senate.png",
+        "choices\/senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate.png",
+        "choices\/senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate.png"
+      ]
+    },
+    {
+      "choice" : {
+        "holidays" : true,
+        "house" : false,
+        "senate" : false
+      },
+      "preview" : "choices\/holidays\/print-preview.jpg",
+      "print" : "choices\/holidays\/Printable 2026 Session Calendar - CPSA (Light) - Holidays.pdf",
+      "wallpapers" : [
+        "choices\/holidays\/Wallpaper 2026 Session Calendar - CPSA (Light) - Holidays.png",
+        "choices\/holidays\/Wallpaper 2026 Session Calendar - CPSA (Blue) - Holidays.png",
+        "choices\/holidays\/Wallpaper 2026 Session Calendar - CPSA (Dark) - Holidays.png",
+        "choices\/holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - Holidays.png",
+        "choices\/holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - Holidays.png",
+        "choices\/holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - Holidays.png"
+      ]
+    }
+  ],
+  "daysHash" : "80f1d486adbd2ffe1994896c3065ec08784c39aaac33d0e38d64c3cd300800fb",
+  "designHash" : "6b4183828859bf81ab5b982664bfe29d69593cdc6e96f589e7286debb7d55cef",
+  "feeds" : [
+    "https:\/\/calendar.google.com\/calendar\/ical\/c_7495e8d3d285062fd29b7a264b5addeafca0a84b7bc1b6d6dee7356dd0dda7a5%40group.calendar.google.com\/public\/basic.ics",
+    "https:\/\/calendar.google.com\/calendar\/ical\/04ve1kf4o83kp0vqvq2jun9m6n2j03of%40import.calendar.google.com\/public\/basic.ics"
+  ],
+  "files" : [
+    "Printable 2026 Session Calendar - CPSA (Light).pdf",
+    "print-preview.jpg",
+    "Wallpaper 2026 Session Calendar - CPSA (Light).png",
+    "Wallpaper 2026 Session Calendar - CPSA (Blue).png",
+    "Wallpaper 2026 Session Calendar - CPSA (Dark).png",
+    "Duo Wallpaper 2026 Session Calendar - CPSA (Light).png",
+    "Duo Wallpaper 2026 Session Calendar - CPSA (Blue).png",
+    "Duo Wallpaper 2026 Session Calendar - CPSA (Dark).png",
+    "choices\/house-senate\/Printable 2026 Session Calendar - CPSA (Light) - House, Senate.pdf",
+    "choices\/house-senate\/print-preview.jpg",
+    "choices\/house-senate\/Wallpaper 2026 Session Calendar - CPSA (Light) - House, Senate.png",
+    "choices\/house-senate\/Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Senate.png",
+    "choices\/house-senate\/Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Senate.png",
+    "choices\/house-senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - House, Senate.png",
+    "choices\/house-senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Senate.png",
+    "choices\/house-senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Senate.png",
+    "choices\/house-holidays\/Printable 2026 Session Calendar - CPSA (Light) - House, Holidays.pdf",
+    "choices\/house-holidays\/print-preview.jpg",
+    "choices\/house-holidays\/Wallpaper 2026 Session Calendar - CPSA (Light) - House, Holidays.png",
+    "choices\/house-holidays\/Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Holidays.png",
+    "choices\/house-holidays\/Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Holidays.png",
+    "choices\/house-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - House, Holidays.png",
+    "choices\/house-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - House, Holidays.png",
+    "choices\/house-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - House, Holidays.png",
+    "choices\/senate-holidays\/Printable 2026 Session Calendar - CPSA (Light) - Senate, Holidays.pdf",
+    "choices\/senate-holidays\/print-preview.jpg",
+    "choices\/senate-holidays\/Wallpaper 2026 Session Calendar - CPSA (Light) - Senate, Holidays.png",
+    "choices\/senate-holidays\/Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate, Holidays.png",
+    "choices\/senate-holidays\/Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate, Holidays.png",
+    "choices\/senate-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - Senate, Holidays.png",
+    "choices\/senate-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate, Holidays.png",
+    "choices\/senate-holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate, Holidays.png",
+    "choices\/house\/Printable 2026 Session Calendar - CPSA (Light) - House.pdf",
+    "choices\/house\/print-preview.jpg",
+    "choices\/house\/Wallpaper 2026 Session Calendar - CPSA (Light) - House.png",
+    "choices\/house\/Wallpaper 2026 Session Calendar - CPSA (Blue) - House.png",
+    "choices\/house\/Wallpaper 2026 Session Calendar - CPSA (Dark) - House.png",
+    "choices\/house\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - House.png",
+    "choices\/house\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - House.png",
+    "choices\/house\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - House.png",
+    "choices\/senate\/Printable 2026 Session Calendar - CPSA (Light) - Senate.pdf",
+    "choices\/senate\/print-preview.jpg",
+    "choices\/senate\/Wallpaper 2026 Session Calendar - CPSA (Light) - Senate.png",
+    "choices\/senate\/Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate.png",
+    "choices\/senate\/Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate.png",
+    "choices\/senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - Senate.png",
+    "choices\/senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - Senate.png",
+    "choices\/senate\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - Senate.png",
+    "choices\/holidays\/Printable 2026 Session Calendar - CPSA (Light) - Holidays.pdf",
+    "choices\/holidays\/print-preview.jpg",
+    "choices\/holidays\/Wallpaper 2026 Session Calendar - CPSA (Light) - Holidays.png",
+    "choices\/holidays\/Wallpaper 2026 Session Calendar - CPSA (Blue) - Holidays.png",
+    "choices\/holidays\/Wallpaper 2026 Session Calendar - CPSA (Dark) - Holidays.png",
+    "choices\/holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Light) - Holidays.png",
+    "choices\/holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Blue) - Holidays.png",
+    "choices\/holidays\/Duo Wallpaper 2026 Session Calendar - CPSA (Dark) - Holidays.png",
+    "print\/index.html",
+    "wallpaper-light\/index.html",
+    "wallpaper-blue\/index.html",
+    "wallpaper-dark\/index.html",
+    "choose\/index.html"
+  ],
+  "formats" : [
+    {
+      "both" : "#92ECE9",
+      "group" : "Print",
+      "holiday" : "#F7E5A1",
+      "house" : "#B5A7FF",
+      "id" : "print",
+      "label" : "Print",
+      "page" : "#FFFFFF",
+      "senate" : "#CACACA"
+    },
+    {
+      "both" : "#92ECE9",
+      "group" : "Tall Wallpaper",
+      "holiday" : "#F7E5A1",
+      "house" : "#B5A7FF",
+      "id" : "wallpaper-light",
+      "label" : "Light",
+      "page" : "#FFFFFF",
+      "senate" : "#CACACA"
+    },
+    {
+      "both" : "#92ECE9",
+      "group" : "Tall Wallpaper",
+      "holiday" : "#F0E19E",
+      "house" : "#B5A7FF",
+      "id" : "wallpaper-blue",
+      "label" : "Blue",
+      "page" : "#0E44D2",
+      "senate" : "#FFFFFF"
+    },
+    {
+      "both" : "#204FE7",
+      "group" : "Tall Wallpaper",
+      "holiday" : "#806820",
+      "house" : "#6D33A8",
+      "id" : "wallpaper-dark",
+      "label" : "Dark",
+      "page" : "#000000",
+      "senate" : "#4A4F5C"
+    },
+    {
+      "both" : "#92ECE9",
+      "group" : "Duo Wallpaper",
+      "holiday" : "#F7E5A1",
+      "house" : "#B5A7FF",
+      "id" : "duo-light",
+      "label" : "Light",
+      "page" : "#FFFFFF",
+      "senate" : "#CACACA"
+    },
+    {
+      "both" : "#92ECE9",
+      "group" : "Duo Wallpaper",
+      "holiday" : "#F0E19E",
+      "house" : "#B5A7FF",
+      "id" : "duo-blue",
+      "label" : "Blue",
+      "page" : "#0E44D2",
+      "senate" : "#FFFFFF"
+    },
+    {
+      "both" : "#204FE7",
+      "group" : "Duo Wallpaper",
+      "holiday" : "#806820",
+      "house" : "#6D33A8",
+      "id" : "duo-dark",
+      "label" : "Dark",
+      "page" : "#000000",
+      "senate" : "#4A4F5C"
+    }
+  ],
+  "preview" : "print-preview.jpg",
+  "print" : "Printable 2026 Session Calendar - CPSA (Light).pdf",
+  "wallpapers" : [
+    "Wallpaper 2026 Session Calendar - CPSA (Light).png",
+    "Wallpaper 2026 Session Calendar - CPSA (Blue).png",
+    "Wallpaper 2026 Session Calendar - CPSA (Dark).png",
+    "Duo Wallpaper 2026 Session Calendar - CPSA (Light).png",
+    "Duo Wallpaper 2026 Session Calendar - CPSA (Blue).png",
+    "Duo Wallpaper 2026 Session Calendar - CPSA (Dark).png"
+  ],
+  "year" : 2026
+}
